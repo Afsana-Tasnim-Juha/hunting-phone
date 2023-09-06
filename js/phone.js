@@ -8,7 +8,7 @@ const loadPhone = async (searchText) => {
 
 const displayPhones = phones => {
     console.log(phones);
-    // 1 jekhane bosabo ta set korlm
+    // 1 where to place 
     const phoneContainer = document.getElementById('phone-container');
 
     // clear phone container cards before adding new cards
@@ -17,13 +17,16 @@ const displayPhones = phones => {
 
     //more than 12 phone show
 
-    const showAllContainer = document.getElementById('show-all-container')
 
-    if (phones.lenght > 10) {
-        showAllContainer.classList.remove('hidden')
+
+    const showAllContainer = document.getElementById('show-all-container');
+
+    if (phones.length > 10) {
+        showAllContainer.classList.remove('hidden');
     } else {
         showAllContainer.classList.add('hidden');
     }
+
 
     //display only 10 phones
 
@@ -50,12 +53,17 @@ const displayPhones = phones => {
         // 4 append child
 
         phoneContainer.appendChild(phoneCard);
-    })
+    });
+
+    // hide spinner
+
+    toggleLoadingSpinner(false);
 }
 
 //handle search button
 
 const handleSearch = () => {
+    toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     console.log(searchText);
@@ -63,9 +71,22 @@ const handleSearch = () => {
 }
 
 const handleSearch2 = () => {
+    toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field2');
     const searchText = searchField.value;
     console.log(searchText);
     loadPhone(searchText);
 }
+
+const toggleLoadingSpinner = (isLoading) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isLoading) {
+        loadingSpinner.classList.remove('hidden');
+    }
+    else {
+        loadingSpinner.classList.add('hidden');
+    }
+}
+
+
 //loadPhone();
