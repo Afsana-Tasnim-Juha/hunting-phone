@@ -45,8 +45,8 @@ const displayPhones = phones => {
         <div class="card-body">
             <h2 class="card-title">${phone.phone_name}</h2>
             <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-                <button class="btn btn-primary">Buy Now</button>
+            <div class="card-actions justify-center">
+                <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
             </div>
         </div>
         `;
@@ -60,6 +60,14 @@ const displayPhones = phones => {
     toggleLoadingSpinner(false);
 }
 
+const handleShowDetails = async (id) => {
+    console.log('SHOW', id)
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    console.log(data);
+
+
+}
 //handle search button
 
 const handleSearch = () => {
@@ -70,13 +78,13 @@ const handleSearch = () => {
     loadPhone(searchText);
 }
 
-const handleSearch2 = () => {
+/*const handleSearch2 = () => {
     toggleLoadingSpinner(true);
     const searchField = document.getElementById('search-field2');
     const searchText = searchField.value;
     console.log(searchText);
     loadPhone(searchText);
-}
+}*/
 
 const toggleLoadingSpinner = (isLoading) => {
     const loadingSpinner = document.getElementById('loading-spinner');
