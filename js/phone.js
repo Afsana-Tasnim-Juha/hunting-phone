@@ -47,4 +47,11 @@ const handleSearch = () => {
     console.log(searchText);
     loadPhone(searchText);
 }
+
+const handleSearch2 = () => {
+    const searchField = document.getElementById('search-field2');
+    const searchText = searchField.value;
+    console.log(searchText);
+    loadPhone(searchText);
+}
 //loadPhone();
